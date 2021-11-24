@@ -1,1 +1,28 @@
-<p>listlivres works!</p>
+<h2>Liste des livres</h2>
+
+<form>
+    Recherche:
+    <input type="radio" name="reCateg" value="tous" (click)="onAfficherAll()" checked>Tous
+    <input type="radio" name="reCateg" value="roman" (click)="onAfficher('roman')">Romans
+    <input type="radio" name="reCateg" value="historique" (click)="onAfficher('historique')">Historique
+</form>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Titre</th>
+            <th>Infos</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let liv of livres">
+            <td>{{liv.id}}</td>
+            <td>{{liv.titre | titlecase}}</td>
+            <td>
+                <button [routerLink]="['/livres', liv.id]" class="btn btn-info">Infos</button>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
